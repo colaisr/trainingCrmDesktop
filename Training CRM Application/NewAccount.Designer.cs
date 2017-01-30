@@ -364,6 +364,7 @@
             this.Text = "NewAccount";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewAccount_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewAccount_FormClosed);
+            this.LocationChanged += new System.EventHandler(this.NewAccount_LocationChanged);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.panel1.ResumeLayout(false);

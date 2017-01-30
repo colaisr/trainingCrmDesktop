@@ -97,5 +97,20 @@ namespace Training_CRM_Application
                 listOfAccounts.Remove(listOfAccounts.Last());
             }
         }
+
+        private void NewAccount_LocationChanged(object sender, EventArgs e)
+        {
+            if ((this.Left + this.Width) > Screen.AllScreens[0].Bounds.Width)
+                this.Left = Screen.AllScreens[0].Bounds.Width - this.Width;
+
+            if (this.Left < Screen.AllScreens[0].Bounds.Left)
+                this.Left = Screen.AllScreens[0].Bounds.Left;
+
+            if ((this.Top + this.Height) > Screen.AllScreens[0].Bounds.Height)
+                this.Top = Screen.AllScreens[0].Bounds.Height - this.Height;
+
+            if (this.Top < Screen.AllScreens[0].Bounds.Top)
+                this.Top = Screen.AllScreens[0].Bounds.Top;
+        }
     }
 }

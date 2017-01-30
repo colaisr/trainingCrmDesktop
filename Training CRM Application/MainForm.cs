@@ -14,8 +14,8 @@ namespace Training_CRM_Application
     public partial class MainForm : Form
     {
         public List<Account> Accounts { get; set; }
-        BindingList<Account> ListOfAccounts;
-        BindingList<Contact> ListOfContacts;
+         BindingList<Account> ListOfAccounts;
+         BindingList<Contact> ListOfContacts;
         int CurrentAccount = 0;
         int CurrentContact = 0;
 
@@ -391,7 +391,9 @@ namespace Training_CRM_Application
             var n = new NewContact(ListOfContacts, dgvContacts);
 
             n.Show();
-        } 
+        }
         #endregion
+
+        
     }
 }

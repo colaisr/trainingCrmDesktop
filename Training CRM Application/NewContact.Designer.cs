@@ -337,6 +337,7 @@
             this.Controls.Add(this.groupBox4);
             this.Name = "NewContact";
             this.Text = "NewContact";
+            this.LocationChanged += new System.EventHandler(this.NewContact_LocationChanged);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);

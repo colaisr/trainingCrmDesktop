@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Training_CRM_Application
 {
-    class Contact
+   public class Contact
     {
         public string Salutation { get; set; }
         public string FirstName { get; set; }
