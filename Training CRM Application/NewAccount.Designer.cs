@@ -109,14 +109,14 @@
             "West Virginia ",
             "Wisconsin ",
             "Wyoming"});
-            this.cmbState.Location = new System.Drawing.Point(438, 55);
+            this.cmbState.Location = new System.Drawing.Point(408, 54);
             this.cmbState.Name = "cmbState";
             this.cmbState.Size = new System.Drawing.Size(189, 21);
             this.cmbState.TabIndex = 7;
             // 
             // txtZip
             // 
-            this.txtZip.Location = new System.Drawing.Point(728, 55);
+            this.txtZip.Location = new System.Drawing.Point(633, 54);
             this.txtZip.Name = "txtZip";
             this.txtZip.Size = new System.Drawing.Size(190, 20);
             this.txtZip.TabIndex = 5;
@@ -124,7 +124,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(386, 58);
+            this.label7.Location = new System.Drawing.Point(370, 58);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(32, 13);
             this.label7.TabIndex = 4;
@@ -150,7 +150,7 @@
             // 
             this.txtStreet.Location = new System.Drawing.Point(69, 21);
             this.txtStreet.Name = "txtStreet";
-            this.txtStreet.Size = new System.Drawing.Size(849, 20);
+            this.txtStreet.Size = new System.Drawing.Size(754, 20);
             this.txtStreet.TabIndex = 1;
             // 
             // label5
@@ -174,7 +174,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(12, 102);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(966, 107);
+            this.groupBox2.Size = new System.Drawing.Size(834, 107);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Billing Address";
@@ -182,7 +182,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(668, 58);
+            this.label8.Location = new System.Drawing.Point(605, 57);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(22, 13);
             this.label8.TabIndex = 6;
@@ -190,7 +190,7 @@
             // 
             // txtWebPage
             // 
-            this.txtWebPage.Location = new System.Drawing.Point(592, 41);
+            this.txtWebPage.Location = new System.Drawing.Point(467, 39);
             this.txtWebPage.Name = "txtWebPage";
             this.txtWebPage.Size = new System.Drawing.Size(327, 20);
             this.txtWebPage.TabIndex = 8;
@@ -198,7 +198,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(455, 44);
+            this.label4.Location = new System.Drawing.Point(396, 40);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 7;
@@ -249,7 +249,7 @@
             // chkIsActive
             // 
             this.chkIsActive.AutoSize = true;
-            this.chkIsActive.Location = new System.Drawing.Point(789, 13);
+            this.chkIsActive.Location = new System.Drawing.Point(664, 11);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(56, 17);
             this.chkIsActive.TabIndex = 10;
@@ -264,7 +264,7 @@
             "HotLead",
             "Web site",
             "Other"});
-            this.cmbSource.Location = new System.Drawing.Point(592, 11);
+            this.cmbSource.Location = new System.Drawing.Point(467, 9);
             this.cmbSource.Name = "cmbSource";
             this.cmbSource.Size = new System.Drawing.Size(160, 21);
             this.cmbSource.TabIndex = 9;
@@ -272,7 +272,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(455, 16);
+            this.label3.Location = new System.Drawing.Point(396, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 6;
@@ -316,13 +316,13 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(967, 74);
+            this.groupBox1.Size = new System.Drawing.Size(834, 74);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(752, 224);
+            this.btnAdd.Location = new System.Drawing.Point(12, 221);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(105, 30);
             this.btnAdd.TabIndex = 4;
@@ -332,7 +332,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(863, 224);
+            this.btnCancel.Location = new System.Drawing.Point(123, 221);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(97, 30);
             this.btnCancel.TabIndex = 5;
@@ -342,7 +342,7 @@
             // 
             // btnCreditCard
             // 
-            this.btnCreditCard.Location = new System.Drawing.Point(20, 226);
+            this.btnCreditCard.Location = new System.Drawing.Point(385, 223);
             this.btnCreditCard.Name = "btnCreditCard";
             this.btnCreditCard.Size = new System.Drawing.Size(113, 27);
             this.btnCreditCard.TabIndex = 6;
@@ -354,7 +354,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(987, 260);
+            this.ClientSize = new System.Drawing.Size(858, 265);
             this.Controls.Add(this.btnCreditCard);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnAdd);

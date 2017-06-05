@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Account.cs" />
+    <Compile Include="Activitie.cs" />
     <Compile Include="Address.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="DB.cs" />
     <Compile Include="Status.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

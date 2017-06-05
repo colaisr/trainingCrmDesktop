@@ -74,9 +74,10 @@
             // 
             // datExpiration
             // 
+            this.datExpiration.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.datExpiration.Location = new System.Drawing.Point(83, 45);
             this.datExpiration.Name = "datExpiration";
-            this.datExpiration.Size = new System.Drawing.Size(279, 20);
+            this.datExpiration.Size = new System.Drawing.Size(102, 20);
             this.datExpiration.TabIndex = 4;
             // 
             // txtCCV

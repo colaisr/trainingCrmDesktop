@@ -14,17 +14,25 @@ namespace Training_CRM_Application
     {
 
         private DataGridView dgvContacts;
-        private BindingList<Contact> listOfContacts;
+        private BindingList<Model.Contact> listOfContacts;
+
+        private bool addClicked = false;
+
 
         public NewContact()
         {
             InitializeComponent();
         }
 
-        public NewContact(BindingList<Contact> listContacts, DataGridView dgvontacts)
+        public NewContact(BindingList<Model.Contact> listContacts, DataGridView dgvontacts,BindingList<string> GetAllAccounts)
         {
             this.listOfContacts = listContacts;
+            this.listOfContacts.Add(new Model.Contact());
             this.dgvContacts = dgvontacts;
+          
+            
+            InitializeComponent();
+            cmbAccount.DataSource = GetAllAccounts;
         }
 
         private void NewContact_LocationChanged(object sender, EventArgs e)
@@ -40,6 +48,36 @@ namespace Training_CRM_Application
 
             if (this.Top < Screen.AllScreens[0].Bounds.Top)
                 this.Top = Screen.AllScreens[0].Bounds.Top;
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddContact();
+            this.DialogResult = DialogResult.OK;
+        }
+
+        private void AddContact()
+        {
+            listOfContacts.Last().Salutation = cmbSalutation.Text;
+            listOfContacts.Last().FirstName = txtFirstName.Text;
+            listOfContacts.Last().LastName = txtLastName.Text;
+            listOfContacts.Last().Account = cmbAccount.Text;
+            listOfContacts.Last().Phone = txtPhone.Text;
+            listOfContacts.Last().Email = txtEmail.Text;
+
+            listOfContacts.Last().State = cmbHomeState.Text;
+            listOfContacts.Last().City = txtHomeCity.Text;
+            listOfContacts.Last().Zip = txtHomeZip.Text;
+            listOfContacts.Last().Street = txtHomeStreet.Text;
+            dgvContacts.Refresh();
+            addClicked = true;
+            this.Close();
         }
     }
 }

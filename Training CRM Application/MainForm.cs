@@ -8,158 +8,186 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Xml;
+using System.Xml.Serialization;
+using System.IO;
+using Model;
 
 namespace Training_CRM_Application
 {
     public partial class MainForm : Form
     {
-        public List<Account> Accounts { get; set; }
-         BindingList<Account> ListOfAccounts;
-         BindingList<Contact> ListOfContacts;
+        public DB dataBase = new DB(true);
+
+        //holds the value for edit
         int CurrentAccount = 0;
         int CurrentContact = 0;
+        int CurrentActivitie = 0;
 
         public MainForm()
         {
             InitializeComponent();
-            fillInitialAccounts();
+            if (File.Exists(@"c:\Training CRM DataBase\DataBase.xml"))
+            {
+                LoadFromFile();
+            }
+            else
+            {
+                SetSources();
+            }
             SetValuesInPaneAccount(CurrentAccount);
             SetValuesInPaneContacts(CurrentContact);
-
+            SetValuesInPaneActivitie(CurrentActivitie);        
         }
-
-
-        private void fillInitialAccounts()
+        //connects the data to the greeds
+        private void SetSources()
         {
-            ListOfAccounts = new BindingList<Account>() {
-                new Account() {
-                    Name = "Nice",
-                    Source ="WEB",
-                    Status =Status.New,
-                    WebPage ="nice.com",
-                    Street ="Zarhin 12",
-                    City ="Raanana",
-                    State ="Arizona",
-                    Zip ="45689"},
-                new Account() {
-                    Name ="Google",
-                    Source ="hot Net",
-                    Status =Status.Closed,
-                    WebPage ="google.com",
-                    Street ="Smolensin 14",
-                    City ="Holon",
-                    State ="Cansas",
-                    Zip ="654987" } };
-
-            AccountsSource = new BindingSource(ListOfAccounts, null);
+            AccountsSource = new BindingSource(dataBase.Accounts, null);
             dgvAccounts.DataSource = AccountsSource;
 
-
-            //contacts default Values
-            ListOfContacts = new BindingList<Contact>();
-            ListOfContacts.Add(new Contact()
-            {
-                FirstName = "Gal",
-                LastName = "Tesler",
-                Salutation = "Mr",
-                Account = "Eaglue",
-                City = "Tel Aviv",
-                Email = "gal.tesler@eaglue.com",
-                Phone = "0542334569",
-                State = "Nebraska",
-                Street = "Rotshild 12",
-                Zip = "321654"
-            });
-            ListOfContacts.Add(new Contact()
-            {
-                FirstName = "Gaby",
-                LastName = "Maor",
-                Salutation = "Mr",
-                Account = "Nice",
-                City = "London",
-                Email = "Gaby.maor@somwhere.com",
-                Phone = "0542334987",
-                State = "Nebraska",
-                Street = "Usishkin 12",
-                Zip = "654654"
-            });
-
-            ContactsSource = new BindingSource(ListOfContacts, null);
+            ContactsSource = new BindingSource(dataBase.Contacts, null);
             dgvContacts.DataSource = ContactsSource;
 
+            activitieSource = new BindingSource(dataBase.Activities, null);
+            dgvActivities.DataSource = activitieSource;           
         }
+        //saves to file on exit
+        private void SaveToFile()
+        {
+            if (!Directory.Exists(@"c:\Training CRM DataBase"))
+            {
+                Directory.CreateDirectory(@"c:\Training CRM DataBase");
+            }
+            if (File.Exists(@"c:\Training CRM DataBase\DataBase.xml"))
+            {
+                File.Delete(@"c:\Training CRM DataBase\DataBase.xml");
+            }
+            using (TextWriter writer = new StreamWriter(@"c:\Training CRM DataBase\DataBase.xml", false))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(DB));
+                serializer.Serialize(writer, dataBase);
+                writer.Close(); 
+            }
+        }
+        //loads from file on launch
+        private void LoadFromFile()
+        {
+            using (FileStream fs = new FileStream(@"c:\Training CRM DataBase\DataBase.xml", FileMode.Open))
+            {
+                XmlSerializer serializer = new XmlSerializer(typeof(DB));                
+                dataBase = (DB)serializer.Deserialize(fs); 
+            }
+            SetSources();
+        }
+
         #region Account Tab
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            DataGridViewSelectedRowCollection selectedRows = null;
-
-            if (dgvAccounts.SelectedRows != null)
+            dataBase.Accounts.RemoveAt(CurrentAccount);
+            if (dataBase.Accounts.Count == 0)
             {
-                selectedRows = dgvAccounts.SelectedRows;
+                CurrentAccount = -1;
+                SetValuesInPaneAccount(CurrentAccount);
+
             }
-            if (selectedRows != null)
+            else
             {
-                foreach (DataGridViewRow row in selectedRows)
-                {
-                    int i = row.Index;
-
-                    ListOfAccounts.RemoveAt(i);
-                }
+                CurrentAccount = 0;
+                SetValuesInPaneAccount(CurrentAccount);
+                dgvAccounts.Rows[0].Selected = true;
             }
         }
 
+        //controls enability of Remove
         private void dgvAccounts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var index = e.RowIndex;
-            var row = dgvAccounts.Rows[index];
-            row.Selected = true;
-
-            CurrentAccount = index;
-            SetValuesInPaneAccount(index);
-
-            btnRemoveAcount.Enabled = true;
+            if (e.RowIndex!=-1)
+            {
+                var index = e.RowIndex;
+                var row = dgvAccounts.Rows[index];
+                row.Selected = true;
+                CurrentAccount = index;
+                SetValuesInPaneAccount(index);
+               
+            }
         }
 
+        //sets edited Account
         private void SetValuesInPaneAccount(int index)
         {   //props
-            txtName.Text = ListOfAccounts[index].Name;
-            cmbSource.Text = ListOfAccounts[index].Source;
-            chkIsActive.Checked = ListOfAccounts[index].Active;
-            txtWebPage.Text = ListOfAccounts[index].WebPage;
-            switch (ListOfAccounts[index].Status)
+
+            if (dataBase.Accounts.Count != 0)
             {
-                case Status.New:
-                    rbnNew.Checked = true;
-                    break;
-                case Status.Pending:
-                    rbnPending.Checked = true;
-                    break;
-                case Status.Closed:
-                    rbnClosed.Checked = true;
-                    break;
-                default:
-                    break;
+                txtName.Enabled = true;
+                cmbSource.Enabled = true;
+                chkIsActive.Enabled = true;
+                txtCity.Enabled = true;
+                txtWebPage.Enabled = true;
+                txtStreet.Enabled = true;
+                cmbState.Enabled = true;
+                txtZip.Enabled = true;
+                rbnClosed.Enabled = true;
+                rbnNew.Enabled = true;
+                rbnPending.Enabled = true;
+
+                txtName.Text = dataBase.Accounts[index].Name;
+                cmbSource.Text = dataBase.Accounts[index].Source;
+                chkIsActive.Checked = dataBase.Accounts[index].Active;
+                txtWebPage.Text = dataBase.Accounts[index].WebPage;
+                switch (dataBase.Accounts[index].Status)
+                {
+                    case Model.Status.New:
+                        rbnNew.Checked = true;
+                        break;
+                    case Model.Status.Pending:
+                        rbnPending.Checked = true;
+                        break;
+                    case Model.Status.Closed:
+                        rbnClosed.Checked = true;
+                        break;
+                    default:
+                        break;
+                }
+                //address
+                txtCity.Text = dataBase.Accounts[index].City;
+                txtStreet.Text = dataBase.Accounts[index].Street;
+                cmbState.Text = dataBase.Accounts[index].State;
+                txtZip.Text = dataBase.Accounts[index].Zip;
+
+                btnRemoveAcount.Enabled = true;
             }
-            //address
-            txtCity.Text = ListOfAccounts[index].City;
-            txtStreet.Text = ListOfAccounts[index].Street;
-            cmbState.Text = ListOfAccounts[index].State;
-            txtZip.Text = ListOfAccounts[index].Zip;
-            
+            else
+            {
+                txtName.Enabled = false;
+                cmbSource.Enabled = false;
+                chkIsActive.Enabled = false;
+                txtCity.Enabled = false;
+                txtWebPage.Enabled = false;
+                txtStreet.Enabled = false;
+                cmbState.Enabled = false;
+                txtZip.Enabled = false;
+                rbnClosed.Enabled = false;
+                rbnNew.Enabled = false;
+                rbnPending.Enabled = false;
+
+                btnRemoveAcount.Enabled = false;
+            }
         }
+
+        #region Editing values
 
         private void txtName_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfAccounts[CurrentAccount].Name = t.Text;
+            dataBase.Accounts[CurrentAccount].Name = t.Text;
             dgvAccounts.Refresh();
         }
 
         private void comboBox1_SelectedValueChanged(object sender, EventArgs e)
         {
             var t = sender as ComboBox;
-            ListOfAccounts[CurrentAccount].Source = t.Text;
+            dataBase.Accounts[CurrentAccount].Source = t.Text;
             dgvAccounts.Refresh();
         }
 
@@ -167,19 +195,19 @@ namespace Training_CRM_Application
         {
             if (rbnNew.Checked)
             {
-                ListOfAccounts[CurrentAccount].Status = Status.New;
+                dataBase.Accounts[CurrentAccount].Status = Model.Status.New;
                 dgvAccounts.Refresh();
             }
             else
             {
                 if (rbnPending.Checked)
                 {
-                    ListOfAccounts[CurrentAccount].Status = Status.Pending;
+                    dataBase.Accounts[CurrentAccount].Status = Model.Status.Pending;
                     dgvAccounts.Refresh();
                 }
                 else
                 {
-                    ListOfAccounts[CurrentAccount].Status = Status.Closed;
+                    dataBase.Accounts[CurrentAccount].Status = Model.Status.Closed;
                     dgvAccounts.Refresh();
                 }
             }
@@ -189,48 +217,48 @@ namespace Training_CRM_Application
         private void txtWebPage_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfAccounts[CurrentAccount].WebPage = t.Text;
+            dataBase.Accounts[CurrentAccount].WebPage = t.Text;
             dgvAccounts.Refresh();
         }
 
         private void txtStreet_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfAccounts[CurrentAccount].Street = t.Text;
+            dataBase.Accounts[CurrentAccount].Street = t.Text;
             dgvAccounts.Refresh();
         }
 
         private void txtCity_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfAccounts[CurrentAccount].City = t.Text;
+            dataBase.Accounts[CurrentAccount].City = t.Text;
             dgvAccounts.Refresh();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfAccounts[CurrentAccount].Zip = t.Text;
+            dataBase.Accounts[CurrentAccount].Zip = t.Text;
             dgvAccounts.Refresh();
         }
 
         private void comboBox2_TextChanged(object sender, EventArgs e)
         {
             var t = sender as ComboBox;
-            ListOfAccounts[CurrentAccount].State = t.Text;
+            dataBase.Accounts[CurrentAccount].State = t.Text;
             dgvAccounts.Refresh();
         }
 
         private void chkIsActive_CheckedChanged(object sender, EventArgs e)
         {
             var t = sender as CheckBox;
-            ListOfAccounts[CurrentAccount].Active = t.Checked;
+            dataBase.Accounts[CurrentAccount].Active = t.Checked;
             dgvAccounts.Refresh();
         }
 
         private void btnNewAccount_Click(object sender, EventArgs e)
         {
-            var n = new NewAccount(ListOfAccounts, dgvAccounts);
+            var n = new NewAccount(dataBase.Accounts, dgvAccounts);
 
             n.Show();
 
@@ -252,10 +280,8 @@ namespace Training_CRM_Application
             //}
         }
 
-        private void dgvAccounts_Leave(object sender, EventArgs e)
-        {
-            btnRemoveAcount.Enabled = false;
-        }
+
+        #endregion 
         
         #endregion
 
@@ -263,57 +289,93 @@ namespace Training_CRM_Application
 
         private void btnRemoveContact_Click(object sender, EventArgs e)
         {
-            DataGridViewSelectedRowCollection selectedRows = null;
-
-            if (dgvContacts.SelectedRows != null)
+            dataBase.Contacts.RemoveAt(CurrentContact);
+            if (dataBase.Contacts.Count == 0)
             {
-                selectedRows = dgvContacts.SelectedRows;
+                CurrentContact = -1;
+                SetValuesInPaneContacts(CurrentContact);
+
             }
-            if (selectedRows != null)
+            else
             {
-                foreach (DataGridViewRow row in selectedRows)
-                {
-                    int i = row.Index;
-
-                    ListOfContacts.RemoveAt(i);
-                }
+                CurrentContact = 0;
+                SetValuesInPaneContacts(CurrentContact);
+                dgvContacts.Rows[0].Selected = true;
             }
         }
 
+        //controls enability of Remove
         private void dgvContacts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            var index = e.RowIndex;
-            var row = dgvContacts.Rows[index];
-            row.Selected = true;
+            if (e.RowIndex!=-1)
+            {
+                var index = e.RowIndex;
+                var row = dgvContacts.Rows[index];
+                row.Selected = true;
 
-            CurrentAccount = index;
-            SetValuesInPaneContacts(index);
+                CurrentAccount = index;
+                SetValuesInPaneContacts(index);
 
-            btnRemoveContact.Enabled = true;
+                btnRemoveContact.Enabled = true; 
+            }
         }
 
+        //sets edited Contact
         private void SetValuesInPaneContacts(int index)
         {
-            //props
-            cmbSalutation.Text = ListOfContacts[index].Salutation;
-            txtFirstName.Text= ListOfContacts[index].FirstName;
-            txtLastName.Text= ListOfContacts[index].LastName;
-            cmbAccount.Text= ListOfContacts[index].Account;
-            txtPhone.Text= ListOfContacts[index].Phone;
-            txtEmail.Text= ListOfContacts[index].Email;
+            if (dataBase.Contacts.Count!=0)
+            {
+                cmbAccount.DataSource = dataBase.GetAllAccounts();
+                //props
+                cmbSalutation.Text = dataBase.Contacts[index].Salutation;
+                cmbSalutation.Enabled = true;
+                txtFirstName.Text = dataBase.Contacts[index].FirstName;
+                txtFirstName.Enabled = true;
+                txtLastName.Text = dataBase.Contacts[index].LastName;
+                txtLastName.Enabled = true;
+                cmbAccount.Text = dataBase.Contacts[index].Account;
+                cmbAccount.Enabled = true;
+                txtPhone.Text = dataBase.Contacts[index].Phone;
+                txtPhone.Enabled = true;
+                txtEmail.Text = dataBase.Contacts[index].Email;
+                txtEmail.Enabled = true;
 
-            //address
-            txtHomeCity.Text = ListOfContacts[index].City;
-            txtHomeStreet.Text = ListOfContacts[index].Street;
-            cmbHomeState.Text = ListOfContacts[index].State;
-            txtHomeZip.Text = ListOfContacts[index].Zip;
+
+
+                //address
+                txtHomeCity.Text = dataBase.Contacts[index].City;
+                txtHomeCity.Enabled = true;
+                txtHomeStreet.Text = dataBase.Contacts[index].Street;
+                txtHomeStreet.Enabled = true;
+                cmbHomeState.Text = dataBase.Contacts[index].State;
+                cmbHomeState.Enabled = true;
+                txtHomeZip.Text = dataBase.Contacts[index].Zip;
+                txtHomeZip.Enabled = true;
+
+                btnRemoveContact.Enabled = true;
+            }
+            else
+            {
+                cmbSalutation.Enabled = false;
+                txtFirstName.Enabled = false;
+                txtLastName.Enabled = false;
+                cmbAccount.Enabled = false;
+                txtPhone.Enabled = false;
+                txtEmail.Enabled = false;
+                txtHomeCity.Enabled = false;
+                txtHomeStreet.Enabled = false;
+                cmbHomeState.Enabled = false;
+                txtHomeZip.Enabled = false;
+                btnRemoveContact.Enabled = false;
+            }
         }
 
+        #region Editing Values        
 
         private void txtFirstName_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfContacts[CurrentAccount].FirstName = t.Text;
+            dataBase.Contacts[CurrentContact].FirstName = t.Text;
             dgvContacts.Refresh();
 
         }
@@ -321,79 +383,188 @@ namespace Training_CRM_Application
         private void txtLastName_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfContacts[CurrentAccount].LastName = t.Text;
+            dataBase.Contacts[CurrentContact].LastName = t.Text;
             dgvContacts.Refresh();
         }
 
         private void cmbSalutation_TextChanged(object sender, EventArgs e)
         {
             var t = sender as ComboBox;
-            ListOfContacts[CurrentAccount].Salutation = t.Text;
+            dataBase.Contacts[CurrentContact].Salutation = t.Text;
             dgvContacts.Refresh();
         }
 
-        private void cmbAccount_TextChanged(object sender, EventArgs e)
+        private void cmbAccount_SelectionChangeCommitted(object sender, EventArgs e)
         {
             var t = sender as ComboBox;
-            ListOfContacts[CurrentAccount].Account = t.Text;
+            dataBase.Contacts[CurrentContact].Account = t.SelectedValue.ToString();
             dgvContacts.Refresh();
         }
 
         private void txtPhone_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfContacts[CurrentAccount].Phone = t.Text;
+            dataBase.Contacts[CurrentContact].Phone = t.Text;
             dgvContacts.Refresh();
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfContacts[CurrentAccount].Email = t.Text;
+            dataBase.Contacts[CurrentContact].Email = t.Text;
             dgvContacts.Refresh();
         }
 
         private void txtHomeStreet_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfContacts[CurrentAccount].Street = t.Text;
+            dataBase.Contacts[CurrentContact].Street = t.Text;
             dgvContacts.Refresh();
         }
 
         private void txtHomeCity_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfContacts[CurrentAccount].City = t.Text;
+            dataBase.Contacts[CurrentContact].City = t.Text;
             dgvContacts.Refresh();
         }
 
         private void cmbHomeState_TextChanged(object sender, EventArgs e)
         {
             var t = sender as ComboBox;
-            ListOfContacts[CurrentAccount].State = t.Text;
+            dataBase.Contacts[CurrentContact].State = t.Text;
             dgvContacts.Refresh();
         }
 
         private void txtHomeZip_TextChanged(object sender, EventArgs e)
         {
             var t = sender as TextBox;
-            ListOfContacts[CurrentAccount].Zip = t.Text;
+            dataBase.Contacts[CurrentContact].Zip = t.Text;
             dgvContacts.Refresh();
-        }      
+        }
 
-        private void dgvContacts_Leave(object sender, EventArgs e)
-        {
-            btnRemoveContact.Enabled = false;
-        }      
+        #endregion
+
+        //private void dgvContacts_Leave(object sender, EventArgs e)
+        //{
+        //    btnRemoveContact.Enabled = false;
+        //}
 
         private void btnNewContact_Click(object sender, EventArgs e)
         {
-            var n = new NewContact(ListOfContacts, dgvContacts);
-
+            var n = new NewContact(dataBase.Contacts, dgvContacts, dataBase.GetAllAccounts());
             n.Show();
+            CurrentContact = dataBase.Contacts.Count-1;            
         }
+
         #endregion
 
-        
+        #region Activitie tab
+
+        private void btnRemoveActivitie_Click(object sender, EventArgs e)
+        {
+            dataBase.Activities.RemoveAt(CurrentActivitie);
+            if (dataBase.Activities.Count==0)
+            {
+                CurrentActivitie = -1;
+                SetValuesInPaneActivitie(CurrentActivitie);
+                
+            }
+            else
+            {
+                CurrentActivitie = 0;
+                SetValuesInPaneActivitie(CurrentActivitie);
+                dgvActivities.Rows[0].Selected = true;
+            }
+        }
+        private void btnNewActivitie_Click(object sender, EventArgs e)
+        {
+            dataBase.Activities.AddNew();
+            CurrentActivitie = dataBase.Activities.Count - 1;
+            SetValuesInPaneActivitie(CurrentActivitie);
+        }
+        private void dgvActivities_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex != -1)
+            {
+                var index = e.RowIndex;
+                var row = dgvActivities.Rows[index];
+                row.Selected = true;
+                CurrentActivitie = index;
+                SetValuesInPaneActivitie(index);
+                btnRemoveActivitie.Enabled = true;
+            }
+        }
+
+        private void SetValuesInPaneActivitie(int index)
+        {
+            if (dataBase.Activities.Count!=0)//will be empty on first run
+            {
+                cmbContacts.DataSource = dataBase.GetAllContacts();
+                cmbContacts.Text = dataBase.Activities[index].Contact;
+                cmbContacts.Enabled = true;
+
+                if (dataBase.Activities[index].Date.Year!=1)
+                {
+                    dtpActivitieDate.Value = dataBase.Activities[index].Date; 
+                }
+                dtpActivitieDate.Enabled = true;
+
+                txtDescription.Text = dataBase.Activities[index].Description;
+                txtDescription.Enabled = true;
+                txtNotes.Text = dataBase.Activities[index].Notes;
+                txtNotes.Enabled = true;
+                btnRemoveActivitie.Enabled = true;
+            }
+            else
+            {                
+                cmbContacts.Enabled = false;
+
+                dtpActivitieDate.Enabled = false;
+                txtDescription.Enabled = false;
+                txtNotes.Enabled = false;
+                btnRemoveActivitie.Enabled = false;
+            }
+        }
+
+        #region Editing Values        
+        private void cmbContacts_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            var t = sender as ComboBox;
+            dataBase.Activities[CurrentActivitie].Contact = t.SelectedValue.ToString();
+            dgvActivities.Refresh();
+        }
+
+        private void dtpActivitieDate_ValueChanged(object sender, EventArgs e)
+        {
+            var t = sender as DateTimePicker;
+            dataBase.Activities[CurrentActivitie].Date = t.Value;
+            dgvActivities.Refresh();
+        }
+        private void txtDescription_TextChanged(object sender, EventArgs e)
+        {
+            var t = sender as TextBox;
+            dataBase.Activities[CurrentActivitie].Description = t.Text;
+            dgvActivities.Refresh();
+        }
+        private void txtNotes_TextChanged(object sender, EventArgs e)
+        {
+            var t = sender as TextBox;
+            dataBase.Activities[CurrentActivitie].Notes = t.Text;
+            dgvActivities.Refresh();
+        }
+        //to do : disable all-> create new..
+        #endregion
+
+
+
+        #endregion
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveToFile();
+        }
+
+
     }
 }

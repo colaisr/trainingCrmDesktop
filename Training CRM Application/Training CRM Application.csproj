@@ -60,6 +60,11 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Activitie.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\DB.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="NewAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +103,7 @@
     </Compile>
     <None Include="Properties\DataSources\Account.datasource" />
     <None Include="Properties\DataSources\Contact.datasource" />
+    <None Include="Properties\DataSources\Model.Activitie.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

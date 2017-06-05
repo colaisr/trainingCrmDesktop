@@ -13,14 +13,14 @@ namespace Training_CRM_Application
 {
     public partial class CreditCardInfo : Form
     {
-        private BindingList<Account> bL;  
+        private BindingList<Model.Account> bL;  
 
         public CreditCardInfo()
         {
             InitializeComponent();
         }
 
-        public CreditCardInfo(BindingList<Account> bL)
+        public CreditCardInfo(BindingList<Model.Account> bL)
         {
             this.bL = bL;
             InitializeComponent();

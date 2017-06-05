@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+
 namespace Training_CRM_Application
 {
     public partial class NewAccount : Form
     {
-        private BindingList<Account> listOfAccounts;
+        private BindingList<Model.Account> listOfAccounts;
         public string CreditCard;
         public DateTime Expires;
         public string CCV="vb";
@@ -25,10 +26,10 @@ namespace Training_CRM_Application
             InitializeComponent();
         }
 
-        public NewAccount(BindingList<Account> listOfAccounts, DataGridView dgvAccounts)
+        public NewAccount(BindingList<Model.Account> listOfAccounts, DataGridView dgvAccounts)
         {
             this.listOfAccounts = listOfAccounts;
-            this.listOfAccounts.Add(new Account());
+            this.listOfAccounts.Add(new Model.Account());
             InitializeComponent();
             this.dgvAccounts = dgvAccounts;
         }
@@ -41,20 +42,20 @@ namespace Training_CRM_Application
 
         private void AddAccount()
         {
-            Status status ;
+            Model.Status status ;
             if (rbnNew.Checked)
             {
-                status = Status.New;
+                status = Model.Status.New;
             }
             else
             {
                 if (rbnPending.Checked)
                 {
-                    status = Status.Pending;
+                    status = Model.Status.Pending;
                 }
                 else
                 {
-                    status = Status.Closed;
+                    status = Model.Status.Closed;
                 }
             }
             listOfAccounts.Last().Name = txtName.Text;

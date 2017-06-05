@@ -43,6 +43,17 @@
             this.MainTabControll = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgvAccounts = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.webPageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.streetDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zipDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activeDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.cardExpiresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AccountsSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnRemoveAcount = new System.Windows.Forms.Button();
             this.btnNewAccount = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -69,6 +80,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvContacts = new System.Windows.Forms.DataGridView();
+            this.salutationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.zipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ContactsSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnRemoveContact = new System.Windows.Forms.Button();
             this.btnNewContact = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -94,42 +116,43 @@
             this.cmbSalutation = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgvActivities = new System.Windows.Forms.DataGridView();
+            this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.notesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activitieSource = new System.Windows.Forms.BindingSource(this.components);
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnRemoveActivitie = new System.Windows.Forms.Button();
+            this.btnNewActivitie = new System.Windows.Forms.Button();
+            this.txtNotes = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.dtpActivitieDate = new System.Windows.Forms.DateTimePicker();
+            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cmbContacts = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sourceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.webPageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.streetDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stateDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zipDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.activeDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cardExpiresDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AccountsSource = new System.Windows.Forms.BindingSource(this.components);
-            this.salutationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.accountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.streetDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.zipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ContactsSource = new System.Windows.Forms.BindingSource(this.components);
+            this.trProducts = new System.Windows.Forms.TreeView();
             this.menuStrip1.SuspendLayout();
             this.MainTabControll.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountsSource)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContactsSource)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountsSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ContactsSource)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.activitieSource)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -222,7 +245,7 @@
             this.MainTabControll.Location = new System.Drawing.Point(0, 21);
             this.MainTabControll.Name = "MainTabControll";
             this.MainTabControll.SelectedIndex = 0;
-            this.MainTabControll.Size = new System.Drawing.Size(991, 524);
+            this.MainTabControll.Size = new System.Drawing.Size(965, 524);
             this.MainTabControll.TabIndex = 1;
             // 
             // tabPage1
@@ -235,7 +258,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(983, 498);
+            this.tabPage1.Size = new System.Drawing.Size(957, 498);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Accounts";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -265,11 +288,85 @@
             this.dgvAccounts.Size = new System.Drawing.Size(980, 243);
             this.dgvAccounts.TabIndex = 4;
             this.dgvAccounts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAccounts_CellClick);
-            this.dgvAccounts.Leave += new System.EventHandler(this.dgvAccounts_Leave);
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sourceDataGridViewTextBoxColumn
+            // 
+            this.sourceDataGridViewTextBoxColumn.DataPropertyName = "Source";
+            this.sourceDataGridViewTextBoxColumn.HeaderText = "Source";
+            this.sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
+            this.sourceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // webPageDataGridViewTextBoxColumn
+            // 
+            this.webPageDataGridViewTextBoxColumn.DataPropertyName = "WebPage";
+            this.webPageDataGridViewTextBoxColumn.HeaderText = "WebPage";
+            this.webPageDataGridViewTextBoxColumn.Name = "webPageDataGridViewTextBoxColumn";
+            this.webPageDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // streetDataGridViewTextBoxColumn1
+            // 
+            this.streetDataGridViewTextBoxColumn1.DataPropertyName = "Street";
+            this.streetDataGridViewTextBoxColumn1.HeaderText = "Street";
+            this.streetDataGridViewTextBoxColumn1.Name = "streetDataGridViewTextBoxColumn1";
+            this.streetDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // cityDataGridViewTextBoxColumn1
+            // 
+            this.cityDataGridViewTextBoxColumn1.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn1.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn1.Name = "cityDataGridViewTextBoxColumn1";
+            this.cityDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // stateDataGridViewTextBoxColumn1
+            // 
+            this.stateDataGridViewTextBoxColumn1.DataPropertyName = "State";
+            this.stateDataGridViewTextBoxColumn1.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn1.Name = "stateDataGridViewTextBoxColumn1";
+            this.stateDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // zipDataGridViewTextBoxColumn1
+            // 
+            this.zipDataGridViewTextBoxColumn1.DataPropertyName = "Zip";
+            this.zipDataGridViewTextBoxColumn1.HeaderText = "Zip";
+            this.zipDataGridViewTextBoxColumn1.Name = "zipDataGridViewTextBoxColumn1";
+            this.zipDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.zipDataGridViewTextBoxColumn1.Width = 80;
+            // 
+            // activeDataGridViewCheckBoxColumn
+            // 
+            this.activeDataGridViewCheckBoxColumn.DataPropertyName = "Active";
+            this.activeDataGridViewCheckBoxColumn.HeaderText = "Active";
+            this.activeDataGridViewCheckBoxColumn.Name = "activeDataGridViewCheckBoxColumn";
+            this.activeDataGridViewCheckBoxColumn.ReadOnly = true;
+            this.activeDataGridViewCheckBoxColumn.Width = 40;
+            // 
+            // cardExpiresDataGridViewTextBoxColumn
+            // 
+            this.cardExpiresDataGridViewTextBoxColumn.DataPropertyName = "CardExpires";
+            this.cardExpiresDataGridViewTextBoxColumn.HeaderText = "CardExpires";
+            this.cardExpiresDataGridViewTextBoxColumn.Name = "cardExpiresDataGridViewTextBoxColumn";
+            this.cardExpiresDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // AccountsSource
+            // 
+            this.AccountsSource.DataSource = typeof(Training_CRM_Application.Account);
             // 
             // btnRemoveAcount
             // 
-            this.btnRemoveAcount.Enabled = false;
             this.btnRemoveAcount.Location = new System.Drawing.Point(121, 211);
             this.btnRemoveAcount.Name = "btnRemoveAcount";
             this.btnRemoveAcount.Size = new System.Drawing.Size(92, 28);
@@ -300,7 +397,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(6, 98);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(966, 107);
+            this.groupBox2.Size = new System.Drawing.Size(948, 107);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Billing Address";
@@ -435,7 +532,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(6, 8);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(967, 74);
+            this.groupBox1.Size = new System.Drawing.Size(948, 74);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -571,7 +668,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(983, 498);
+            this.tabPage2.Size = new System.Drawing.Size(957, 498);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Contacts";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -600,7 +697,83 @@
             this.dgvContacts.Size = new System.Drawing.Size(973, 247);
             this.dgvContacts.TabIndex = 6;
             this.dgvContacts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvContacts_CellClick);
-            this.dgvContacts.Leave += new System.EventHandler(this.dgvContacts_Leave);
+            // 
+            // salutationDataGridViewTextBoxColumn
+            // 
+            this.salutationDataGridViewTextBoxColumn.DataPropertyName = "Salutation";
+            this.salutationDataGridViewTextBoxColumn.HeaderText = "Salutation";
+            this.salutationDataGridViewTextBoxColumn.Name = "salutationDataGridViewTextBoxColumn";
+            this.salutationDataGridViewTextBoxColumn.ReadOnly = true;
+            this.salutationDataGridViewTextBoxColumn.Width = 60;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // accountDataGridViewTextBoxColumn
+            // 
+            this.accountDataGridViewTextBoxColumn.DataPropertyName = "Account";
+            this.accountDataGridViewTextBoxColumn.HeaderText = "Account";
+            this.accountDataGridViewTextBoxColumn.Name = "accountDataGridViewTextBoxColumn";
+            this.accountDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // streetDataGridViewTextBoxColumn
+            // 
+            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
+            this.streetDataGridViewTextBoxColumn.HeaderText = "Street";
+            this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
+            this.streetDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cityDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
+            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // zipDataGridViewTextBoxColumn
+            // 
+            this.zipDataGridViewTextBoxColumn.DataPropertyName = "Zip";
+            this.zipDataGridViewTextBoxColumn.HeaderText = "Zip";
+            this.zipDataGridViewTextBoxColumn.Name = "zipDataGridViewTextBoxColumn";
+            this.zipDataGridViewTextBoxColumn.ReadOnly = true;
+            this.zipDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // ContactsSource
+            // 
+            this.ContactsSource.DataSource = typeof(Training_CRM_Application.Contact);
             // 
             // btnRemoveContact
             // 
@@ -635,7 +808,7 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Location = new System.Drawing.Point(3, 96);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(966, 107);
+            this.groupBox3.Size = new System.Drawing.Size(951, 107);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Home Address";
@@ -773,7 +946,7 @@
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Location = new System.Drawing.Point(3, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(967, 84);
+            this.groupBox4.Size = new System.Drawing.Size(951, 84);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             // 
@@ -800,7 +973,7 @@
             this.cmbAccount.Name = "cmbAccount";
             this.cmbAccount.Size = new System.Drawing.Size(121, 21);
             this.cmbAccount.TabIndex = 9;
-            this.cmbAccount.TextChanged += new System.EventHandler(this.cmbAccount_TextChanged);
+            this.cmbAccount.SelectionChangeCommitted += new System.EventHandler(this.cmbAccount_SelectionChangeCommitted);
             // 
             // label18
             // 
@@ -887,176 +1060,200 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dgvActivities);
+            this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(983, 498);
+            this.tabPage3.Size = new System.Drawing.Size(957, 498);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Activities";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // dgvActivities
+            // 
+            this.dgvActivities.AllowUserToAddRows = false;
+            this.dgvActivities.AllowUserToDeleteRows = false;
+            this.dgvActivities.AutoGenerateColumns = false;
+            this.dgvActivities.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvActivities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dateDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.contactDataGridViewTextBoxColumn,
+            this.notesDataGridViewTextBoxColumn});
+            this.dgvActivities.DataSource = this.activitieSource;
+            this.dgvActivities.Location = new System.Drawing.Point(7, 235);
+            this.dgvActivities.Name = "dgvActivities";
+            this.dgvActivities.ReadOnly = true;
+            this.dgvActivities.Size = new System.Drawing.Size(942, 257);
+            this.dgvActivities.TabIndex = 2;
+            this.dgvActivities.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActivities_CellClick);
+            // 
+            // dateDataGridViewTextBoxColumn
+            // 
+            this.dateDataGridViewTextBoxColumn.DataPropertyName = "Date";
+            this.dateDataGridViewTextBoxColumn.HeaderText = "Date";
+            this.dateDataGridViewTextBoxColumn.Name = "dateDataGridViewTextBoxColumn";
+            this.dateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contactDataGridViewTextBoxColumn
+            // 
+            this.contactDataGridViewTextBoxColumn.DataPropertyName = "Contact";
+            this.contactDataGridViewTextBoxColumn.HeaderText = "Contact";
+            this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
+            this.contactDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // notesDataGridViewTextBoxColumn
+            // 
+            this.notesDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.notesDataGridViewTextBoxColumn.DataPropertyName = "Notes";
+            this.notesDataGridViewTextBoxColumn.HeaderText = "Notes";
+            this.notesDataGridViewTextBoxColumn.Name = "notesDataGridViewTextBoxColumn";
+            this.notesDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // activitieSource
+            // 
+            this.activitieSource.DataSource = typeof(Model.Activitie);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnRemoveActivitie);
+            this.groupBox5.Controls.Add(this.btnNewActivitie);
+            this.groupBox5.Controls.Add(this.txtNotes);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Controls.Add(this.dtpActivitieDate);
+            this.groupBox5.Controls.Add(this.txtDescription);
+            this.groupBox5.Controls.Add(this.label22);
+            this.groupBox5.Controls.Add(this.cmbContacts);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Location = new System.Drawing.Point(3, 6);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(948, 222);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            // 
+            // btnRemoveActivitie
+            // 
+            this.btnRemoveActivitie.Enabled = false;
+            this.btnRemoveActivitie.Location = new System.Drawing.Point(519, 182);
+            this.btnRemoveActivitie.Name = "btnRemoveActivitie";
+            this.btnRemoveActivitie.Size = new System.Drawing.Size(75, 23);
+            this.btnRemoveActivitie.TabIndex = 14;
+            this.btnRemoveActivitie.Text = "Remove";
+            this.btnRemoveActivitie.UseVisualStyleBackColor = true;
+            this.btnRemoveActivitie.Click += new System.EventHandler(this.btnRemoveActivitie_Click);
+            // 
+            // btnNewActivitie
+            // 
+            this.btnNewActivitie.Location = new System.Drawing.Point(519, 13);
+            this.btnNewActivitie.Name = "btnNewActivitie";
+            this.btnNewActivitie.Size = new System.Drawing.Size(75, 23);
+            this.btnNewActivitie.TabIndex = 13;
+            this.btnNewActivitie.Text = "New";
+            this.btnNewActivitie.UseVisualStyleBackColor = true;
+            this.btnNewActivitie.Click += new System.EventHandler(this.btnNewActivitie_Click);
+            // 
+            // txtNotes
+            // 
+            this.txtNotes.Location = new System.Drawing.Point(9, 99);
+            this.txtNotes.Multiline = true;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(470, 117);
+            this.txtNotes.TabIndex = 12;
+            this.txtNotes.TextChanged += new System.EventHandler(this.txtNotes_TextChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 82);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(35, 13);
+            this.label21.TabIndex = 11;
+            this.label21.Text = "Notes";
+            // 
+            // dtpActivitieDate
+            // 
+            this.dtpActivitieDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpActivitieDate.Location = new System.Drawing.Point(362, 14);
+            this.dtpActivitieDate.Name = "dtpActivitieDate";
+            this.dtpActivitieDate.Size = new System.Drawing.Size(117, 20);
+            this.dtpActivitieDate.TabIndex = 10;
+            this.dtpActivitieDate.ValueChanged += new System.EventHandler(this.dtpActivitieDate_ValueChanged);
+            // 
+            // txtDescription
+            // 
+            this.txtDescription.Location = new System.Drawing.Point(72, 41);
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.Size = new System.Drawing.Size(407, 20);
+            this.txtDescription.TabIndex = 2;
+            this.txtDescription.TextChanged += new System.EventHandler(this.txtDescription_TextChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 48);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(60, 13);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Description";
+            // 
+            // cmbContacts
+            // 
+            this.cmbContacts.FormattingEnabled = true;
+            this.cmbContacts.Items.AddRange(new object[] {
+            "Advertisement",
+            "HotLead",
+            "Web site",
+            "Other"});
+            this.cmbContacts.Location = new System.Drawing.Point(72, 13);
+            this.cmbContacts.Name = "cmbContacts";
+            this.cmbContacts.Size = new System.Drawing.Size(198, 21);
+            this.cmbContacts.TabIndex = 9;
+            this.cmbContacts.SelectionChangeCommitted += new System.EventHandler(this.cmbContacts_SelectionChangeCommitted);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(276, 16);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(30, 13);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "Date";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 16);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(44, 13);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Contact";
+            // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.trProducts);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(983, 498);
+            this.tabPage4.Size = new System.Drawing.Size(957, 498);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Products";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // nameDataGridViewTextBoxColumn
+            // trProducts
             // 
-            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
-            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sourceDataGridViewTextBoxColumn
-            // 
-            this.sourceDataGridViewTextBoxColumn.DataPropertyName = "Source";
-            this.sourceDataGridViewTextBoxColumn.HeaderText = "Source";
-            this.sourceDataGridViewTextBoxColumn.Name = "sourceDataGridViewTextBoxColumn";
-            this.sourceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // webPageDataGridViewTextBoxColumn
-            // 
-            this.webPageDataGridViewTextBoxColumn.DataPropertyName = "WebPage";
-            this.webPageDataGridViewTextBoxColumn.HeaderText = "WebPage";
-            this.webPageDataGridViewTextBoxColumn.Name = "webPageDataGridViewTextBoxColumn";
-            this.webPageDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // streetDataGridViewTextBoxColumn1
-            // 
-            this.streetDataGridViewTextBoxColumn1.DataPropertyName = "Street";
-            this.streetDataGridViewTextBoxColumn1.HeaderText = "Street";
-            this.streetDataGridViewTextBoxColumn1.Name = "streetDataGridViewTextBoxColumn1";
-            this.streetDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // cityDataGridViewTextBoxColumn1
-            // 
-            this.cityDataGridViewTextBoxColumn1.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn1.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn1.Name = "cityDataGridViewTextBoxColumn1";
-            this.cityDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // stateDataGridViewTextBoxColumn1
-            // 
-            this.stateDataGridViewTextBoxColumn1.DataPropertyName = "State";
-            this.stateDataGridViewTextBoxColumn1.HeaderText = "State";
-            this.stateDataGridViewTextBoxColumn1.Name = "stateDataGridViewTextBoxColumn1";
-            this.stateDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // zipDataGridViewTextBoxColumn1
-            // 
-            this.zipDataGridViewTextBoxColumn1.DataPropertyName = "Zip";
-            this.zipDataGridViewTextBoxColumn1.HeaderText = "Zip";
-            this.zipDataGridViewTextBoxColumn1.Name = "zipDataGridViewTextBoxColumn1";
-            this.zipDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.zipDataGridViewTextBoxColumn1.Width = 80;
-            // 
-            // activeDataGridViewCheckBoxColumn
-            // 
-            this.activeDataGridViewCheckBoxColumn.DataPropertyName = "Active";
-            this.activeDataGridViewCheckBoxColumn.HeaderText = "Active";
-            this.activeDataGridViewCheckBoxColumn.Name = "activeDataGridViewCheckBoxColumn";
-            this.activeDataGridViewCheckBoxColumn.ReadOnly = true;
-            this.activeDataGridViewCheckBoxColumn.Width = 40;
-            // 
-            // cardExpiresDataGridViewTextBoxColumn
-            // 
-            this.cardExpiresDataGridViewTextBoxColumn.DataPropertyName = "CardExpires";
-            this.cardExpiresDataGridViewTextBoxColumn.HeaderText = "CardExpires";
-            this.cardExpiresDataGridViewTextBoxColumn.Name = "cardExpiresDataGridViewTextBoxColumn";
-            this.cardExpiresDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // AccountsSource
-            // 
-            this.AccountsSource.DataSource = typeof(Training_CRM_Application.Account);
-            // 
-            // salutationDataGridViewTextBoxColumn
-            // 
-            this.salutationDataGridViewTextBoxColumn.DataPropertyName = "Salutation";
-            this.salutationDataGridViewTextBoxColumn.HeaderText = "Salutation";
-            this.salutationDataGridViewTextBoxColumn.Name = "salutationDataGridViewTextBoxColumn";
-            this.salutationDataGridViewTextBoxColumn.ReadOnly = true;
-            this.salutationDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // accountDataGridViewTextBoxColumn
-            // 
-            this.accountDataGridViewTextBoxColumn.DataPropertyName = "Account";
-            this.accountDataGridViewTextBoxColumn.HeaderText = "Account";
-            this.accountDataGridViewTextBoxColumn.Name = "accountDataGridViewTextBoxColumn";
-            this.accountDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // streetDataGridViewTextBoxColumn
-            // 
-            this.streetDataGridViewTextBoxColumn.DataPropertyName = "Street";
-            this.streetDataGridViewTextBoxColumn.HeaderText = "Street";
-            this.streetDataGridViewTextBoxColumn.Name = "streetDataGridViewTextBoxColumn";
-            this.streetDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cityDataGridViewTextBoxColumn
-            // 
-            this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
-            this.cityDataGridViewTextBoxColumn.HeaderText = "City";
-            this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
-            this.cityDataGridViewTextBoxColumn.ReadOnly = true;
-            this.cityDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // stateDataGridViewTextBoxColumn
-            // 
-            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
-            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
-            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
-            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // zipDataGridViewTextBoxColumn
-            // 
-            this.zipDataGridViewTextBoxColumn.DataPropertyName = "Zip";
-            this.zipDataGridViewTextBoxColumn.HeaderText = "Zip";
-            this.zipDataGridViewTextBoxColumn.Name = "zipDataGridViewTextBoxColumn";
-            this.zipDataGridViewTextBoxColumn.ReadOnly = true;
-            this.zipDataGridViewTextBoxColumn.Width = 80;
-            // 
-            // ContactsSource
-            // 
-            this.ContactsSource.DataSource = typeof(Training_CRM_Application.Contact);
+            this.trProducts.Location = new System.Drawing.Point(8, 220);
+            this.trProducts.Name = "trProducts";
+            this.trProducts.Size = new System.Drawing.Size(663, 116);
+            this.trProducts.TabIndex = 0;
             // 
             // MainForm
             // 
@@ -1067,12 +1264,14 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Training CRM";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.MainTabControll.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAccounts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountsSource)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -1081,12 +1280,17 @@
             this.panel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContacts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ContactsSource)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountsSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ContactsSource)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActivities)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.activitieSource)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1182,5 +1386,23 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn zipDataGridViewTextBoxColumn;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnRemoveActivitie;
+        private System.Windows.Forms.Button btnNewActivitie;
+        private System.Windows.Forms.TextBox txtNotes;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.DateTimePicker dtpActivitieDate;
+        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox cmbContacts;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataGridView dgvActivities;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn notesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource activitieSource;
+        private System.Windows.Forms.TreeView trProducts;
     }
 }
